@@ -1,10 +1,10 @@
 SRC_URI = " \
-    git://git@github.com/linux-automation/tacd.git;protocol=ssh;branch=main \
+    git://git@github.com/hnez/tacd.git;protocol=ssh;branch=gen2 \
     npmsw://${THISDIR}/${BPN}/npm-shrinkwrap.json \
     "
 
 PV = "0.1.0+git${SRCPV}"
-SRCREV = "28451590d205395323c53ef17827510b1ea15ed7"
+SRCREV = "52c09b426528a2045bbef7367787886328ffd79c"
 
 S = "${WORKDIR}/git/web"
 
