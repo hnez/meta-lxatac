@@ -105,6 +105,7 @@ IMAGE_INSTALL:append = "\
     sispmctl \
     smemstat \
     socat \
+    sockperf \
     strace \
     stress-ng \
     sysstat \
