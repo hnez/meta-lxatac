@@ -58,6 +58,7 @@ IMAGE_INSTALL:append = "\
     linuxptp \
     linux-serial-test \
     lldpd \
+    lmbench \
     lmsensors \
     lxatac-factory-data \
     lxatac-lldpd-config \
@@ -96,6 +97,7 @@ IMAGE_INSTALL:append = "\
     rauc \
     ripgrep \
     rsync \
+    rt-tests \
     screen \
     ser2net \
     setserial \
