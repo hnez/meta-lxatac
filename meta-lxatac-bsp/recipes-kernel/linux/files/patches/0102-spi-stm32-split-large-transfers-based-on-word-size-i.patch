@@ -18,6 +18,9 @@ Split transfers based on the number of words instead.
 This has the added benefit of not artificially limiting the maximum
 length of bpw > 8 transfers to half or a quarter of the actual limit.
 
+The combination of very large transfers and bits_per_word = 16 is triggered
+e.g. by MIPI DBI displays when updating large parts of the screen.
+
 Signed-off-by: Leonard Göhrs <l.goehrs@pengutronix.de>
 ---
  drivers/spi/spi-stm32.c | 6 +++---

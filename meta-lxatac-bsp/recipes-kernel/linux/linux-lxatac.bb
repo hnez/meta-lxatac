@@ -6,13 +6,13 @@ LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 PR = "r0"
-PV = "6.3-rc1"
+PV = "6.3-rc4"
 
 SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=https;branch=master \
            file://defconfig \
            "
 
-SRCREV = "fe15c26ee26efa11741a7b632e9f23b01aca4cc6"
+SRCREV = "197b6b60ae7bc51dd0814953c562833143b292aa"
 
 require files/patches/series.inc
 

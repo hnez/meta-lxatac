@@ -5,25 +5,25 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-Add spi_split_transfers_maxwords method that splits
+Add spi_split_transfers_maxwords() function that splits
 spi_transfers transparently into multiple transfers
-that are below the given number of SPI words.
+that are below a given number of SPI words.
 
 This function reuses most of its code from
-spi_split_transfers_maxsize and for transfers with
+spi_split_transfers_maxsize() and for transfers with
 eight or less bits per word actually behaves the same.
 
 Signed-off-by: Leonard Göhrs <l.goehrs@pengutronix.de>
 ---
- drivers/spi/spi.c       | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
+ drivers/spi/spi.c       | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
  include/linux/spi/spi.h |  4 ++++
- 2 files changed, 52 insertions(+)
+ 2 files changed, 53 insertions(+)
 
 diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 44b85a8d47f1..9e819658bf0e 100644
+index 44b85a8d47f1..165e4a286080 100644
 --- a/drivers/spi/spi.c
 +++ b/drivers/spi/spi.c
-@@ -3621,6 +3621,54 @@ int spi_split_transfers_maxsize(struct spi_controller *ctlr,
+@@ -3621,6 +3621,55 @@ int spi_split_transfers_maxsize(struct spi_controller *ctlr,
  }
  EXPORT_SYMBOL_GPL(spi_split_transfers_maxsize);
  
@@ -32,10 +32,10 @@ index 44b85a8d47f1..9e819658bf0e 100644
 + * spi_split_transfers_maxwords - split spi transfers into multiple transfers
 + *                                when an individual transfer exceeds a
 + *                                certain number of SPI words
-+ * @ctlr:    the @spi_controller for this transfer
-+ * @msg:   the @spi_message to transform
-+ * @maxwords:  the number of words to limit each transfer to
-+ * @gfp: GFP allocation flags
++ * @ctlr:     the @spi_controller for this transfer
++ * @msg:      the @spi_message to transform
++ * @maxwords: the number of words to limit each transfer to
++ * @gfp:      GFP allocation flags
 + *
 + * Return: status of transformation
 + */
@@ -45,8 +45,6 @@ index 44b85a8d47f1..9e819658bf0e 100644
 +				 gfp_t gfp)
 +{
 +	struct spi_transfer *xfer;
-+	size_t maxsize;
-+	int ret;
 +
 +	/*
 +	 * Iterate over the transfer_list,
@@ -56,6 +54,9 @@ index 44b85a8d47f1..9e819658bf0e 100644
 +	 * replacement has happened).
 +	 */
 +	list_for_each_entry(xfer, &msg->transfers, transfer_list) {
++		size_t maxsize;
++		int ret;
++
 +		if (xfer->bits_per_word <= 8)
 +			maxsize = maxwords;
 +		else if (xfer->bits_per_word <= 16)
