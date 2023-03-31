@@ -90,7 +90,6 @@ IMAGE_INSTALL:append = "\
     openssl-engines \
     packagegroup-base-wifi \
     perf \
-    platsch \
     ply \
     podman \
     pps-tools \

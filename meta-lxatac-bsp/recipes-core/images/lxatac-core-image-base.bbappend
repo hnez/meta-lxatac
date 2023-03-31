@@ -1,7 +1,7 @@
 inherit bootspec
 
 BOOTSPEC_EXTRALINE = "linux-appendroot true\n"
-BOOTSPEC_OPTIONS += "rootwait init=/usr/sbin/platsch"
+BOOTSPEC_OPTIONS += "rootwait"
 
 IMAGE_INSTALL:append = "\
     kernel-image \
