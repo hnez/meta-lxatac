@@ -1,0 +1,33 @@
+From: =?UTF-8?q?Leonard=20G=C3=B6hrs?= <l.goehrs@pengutronix.de>
+Date: Wed, 5 Apr 2023 13:46:30 +0200
+Subject: [PATCH] leds: gpio: always set up brightness_set_blocking op
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes drivers/triggers that call led_set_brightness_sync()
+like e.g. ledtrig-tty, as led_set_brightness_sync internally calls
+__led_set_brightness_blocking() which will just return -ENOTSUPP
+if brightness_set_blocking() is not available
+
+Signed-off-by: Leonard Göhrs <l.goehrs@pengutronix.de>
+---
+ drivers/leds/leds-gpio.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/leds/leds-gpio.c b/drivers/leds/leds-gpio.c
+index ce4e79939731..be9bf8489646 100644
+--- a/drivers/leds/leds-gpio.c
++++ b/drivers/leds/leds-gpio.c
+@@ -81,10 +81,9 @@ static int create_gpio_led(const struct gpio_led *template,
+ 
+ 	led_dat->cdev.default_trigger = template->default_trigger;
+ 	led_dat->can_sleep = gpiod_cansleep(led_dat->gpiod);
++	led_dat->cdev.brightness_set_blocking = gpio_led_set_blocking;
+ 	if (!led_dat->can_sleep)
+ 		led_dat->cdev.brightness_set = gpio_led_set;
+-	else
+-		led_dat->cdev.brightness_set_blocking = gpio_led_set_blocking;
+ 	led_dat->blinking = 0;
+ 	if (blink_set) {
+ 		led_dat->platform_gpio_blink_set = blink_set;

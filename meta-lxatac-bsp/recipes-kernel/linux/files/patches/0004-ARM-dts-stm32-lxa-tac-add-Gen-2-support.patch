@@ -29,10 +29,10 @@ Signed-off-by: Leonard Göhrs <l.goehrs@pengutronix.de>
 ---
  arch/arm/boot/dts/Makefile                     |   2 +
  arch/arm/boot/dts/stm32mp157c-lxa-tac-gen1.dts | 104 ++++
- arch/arm/boot/dts/stm32mp157c-lxa-tac-gen2.dts | 186 +++++++
+ arch/arm/boot/dts/stm32mp157c-lxa-tac-gen2.dts | 191 +++++++
  arch/arm/boot/dts/stm32mp157c-lxa-tac.dts      | 729 -------------------------
  arch/arm/boot/dts/stm32mp15xc-lxa-tac.dtsi     | 716 ++++++++++++++++++++++++
- 5 files changed, 1008 insertions(+), 729 deletions(-)
+ 5 files changed, 1013 insertions(+), 729 deletions(-)
  create mode 100644 arch/arm/boot/dts/stm32mp157c-lxa-tac-gen1.dts
  create mode 100644 arch/arm/boot/dts/stm32mp157c-lxa-tac-gen2.dts
  delete mode 100644 arch/arm/boot/dts/stm32mp157c-lxa-tac.dts
@@ -163,10 +163,10 @@ index 000000000000..1fcfdb99022f
 +};
 diff --git a/arch/arm/boot/dts/stm32mp157c-lxa-tac-gen2.dts b/arch/arm/boot/dts/stm32mp157c-lxa-tac-gen2.dts
 new file mode 100644
-index 000000000000..8fdea9bdd282
+index 000000000000..7da179273f7c
 --- /dev/null
 +++ b/arch/arm/boot/dts/stm32mp157c-lxa-tac-gen2.dts
-@@ -0,0 +1,186 @@
+@@ -0,0 +1,191 @@
 +/* SPDX-License-Identifier: (GPL-2.0-or-later OR BSD-3-Clause) */
 +/*
 + * Copyright (C) 2020 STMicroelectronics - All Rights Reserved
@@ -329,6 +329,11 @@ index 000000000000..8fdea9bdd282
 +
 +&gpu {
 +	status = "disabled";
++};
++
++&m_can2 {
++	termination-gpios = <&gpioe 4 GPIO_ACTIVE_HIGH>;
++	termination-ohms = <120>;
 +};
 +
 +&pinctrl {
