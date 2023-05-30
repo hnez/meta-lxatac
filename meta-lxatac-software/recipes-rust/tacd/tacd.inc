@@ -4,6 +4,7 @@ SRC_URI += " \
     file://de.pengutronix.tacd.conf \
     file://01_stable.yaml \
     file://05_testing.yaml \
+    file://10_devel.yaml \
     "
 
 inherit pkgconfig
@@ -21,6 +22,7 @@ do_install:append() {
 
     install -D -m 0644 ${WORKDIR}/01_stable.yaml ${D}${datadir}/tacd/update_channels/01_stable.yaml
     install -D -m 0644 ${WORKDIR}/05_testing.yaml ${D}${datadir}/tacd/update_channels/05_testing.yaml
+    install -D -m 0644 ${WORKDIR}/10_devel.yaml ${D}${datadir}/tacd/update_channels/10_devel.yaml
 
     install -d ${D}${sysconfdir}/dbus-1/system.d
     install -m 0644 ${WORKDIR}/de.pengutronix.tacd.conf ${D}/${sysconfdir}/dbus-1/system.d/
