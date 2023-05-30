@@ -1,0 +1,9 @@
+name: devel
+display_name: Devel (lgo)
+description: |
+  Development bundles containing future features
+  provided by lgo.
+url: |
+  https://www.lab.stw.pengutronix.de/jenkins/meta-lxatac-lgo-mickledore-lxatac-vanilla/lxatac/lxatac-core-bundle-base-lxatac.raucb
+polling_interval: "12h"
+
