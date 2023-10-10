@@ -1,14 +1,18 @@
 require recipes-bsp/barebox/barebox.inc
 
-SRC_URI += " \
+SRC_URI = " \
+    git://git.pengutronix.de/git/barebox;protocol=https;branch=master \
     file://defconfig \
     file://env \
 "
 require files/patches/series.inc
 
-SRC_URI[sha256sum] = "d0f78a69ba240327247c8fd0e1d45287e4a0dff99ed847e9a696cc2da0cf388c"
+SRCREV = "7f147d2ef6edd49defa0c136f44dfdc3c103569e"
+S = "${WORKDIR}/git"
 
 COMPATIBLE_MACHINE = "lxatac"
+
+BAREBOX_IMAGES = "*.stm32"
 
 BAREBOX_DTBS_TO_DEPLOY = "arch/arm/dts/*.dtb"
 
