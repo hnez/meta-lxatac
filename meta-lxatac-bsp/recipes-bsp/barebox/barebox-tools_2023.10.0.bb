@@ -7,10 +7,9 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=f5125d13e000b9ca1f0d3364286c4192"
 DEPENDS = "libusb1 libusb1-native lzop-native bison-native flex-native pkgconfig-native"
 BBCLASSEXTEND = "native"
 
-SRC_URI = "http://barebox.org/download/barebox-${PV}.tar.bz2"
-SRC_URI[sha256sum] = "6a584d1fbb5d8ea6ce0c73d3a6c83ff531f488c64cbd6354d32fd420159539ed"
-
-S = "${WORKDIR}/barebox-${PV}"
+SRC_URI = "git://git.pengutronix.de/git/barebox;protocol=https;branch=master"
+SRCREV = "7f147d2ef6edd49defa0c136f44dfdc3c103569e"
+S = "${WORKDIR}/git"
 
 EXTRA_OEMAKE = " \
     ARCH=sandbox \
