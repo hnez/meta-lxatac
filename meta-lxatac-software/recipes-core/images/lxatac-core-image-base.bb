@@ -95,6 +95,7 @@ IMAGE_INSTALL:append = "\
     openssh-sftp \
     openssh-sftp-server \
     openssl-engines \
+    opkg \
     perf \
     ply \
     podman \
