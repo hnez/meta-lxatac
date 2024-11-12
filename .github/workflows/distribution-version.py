@@ -77,12 +77,11 @@ def check_codename(codename):
     ref = os.environ.get("GITHUB_REF_NAME")
     ref_type = os.environ.get("GITHUB_REF_TYPE")
 
-    if base_ref:
-        print(f"Checking codename {codename} against pull request into {base_ref}")
-        assert codename == f"tacos-{base_ref}"
-    elif ref and ref_type == "branch":
-        print(f"Checking codename {codename} against branch {ref}")
-        assert codename == f"tacos-{ref}"
+    branch = base_ref or (ref if ref_type == "branch" else None)
+
+    if branch:
+        print(f"Checking codename {codename} against branch {branch}")
+        assert codename == f"tacos-{branch}"
     elif ref_type == "tag":
         print("Running for a tag. Skipping codename check")
     else:
