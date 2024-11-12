@@ -79,7 +79,9 @@ def check_codename(codename):
 
     branch = base_ref or (ref if ref_type == "branch" else None)
 
-    if branch:
+    if branch and branch.startswith("stable-"):
+        print("Running for a stable branch. Skipping codename check")
+    elif branch:
         print(f"Checking codename {codename} against branch {branch}")
         assert codename == f"tacos-{branch}"
     elif ref_type == "tag":
