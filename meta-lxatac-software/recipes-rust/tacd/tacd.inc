@@ -39,7 +39,7 @@ do_install:append() {
 }
 
 LIC_FILES_CHKSUM = " \
-    file://LICENSE;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
+    file://LICENSE;md5=570a9b3749dd0463a1778803b12a6dce \
 "
 
 require tacd-crates.inc
