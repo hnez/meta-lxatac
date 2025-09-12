@@ -2,14 +2,14 @@ SUMMARY = "Universal Update Utility"
 DESCRIPTION = "Image deployment tool for i.MX chips"
 HOMEPAGE = "https://github.com/NXPmicro/mfgtools"
 
-SRC_URI = "https://github.com/nxp-imx/mfgtools/releases/download/uuu_${PV}/uuu_source-uuu_${PV}.tar.gz"
+SRC_URI = "git://github.com/nxp-imx/mfgtools.git;protocol=https;branch=${SRCBRANCH}"
 
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=38ec0c18112e9a92cffc4951661e85a5"
 
 inherit cmake pkgconfig
 
-S = "${WORKDIR}/uuu-uuu_${PV}"
+S = "${WORKDIR}/git"
 
 DEPENDS = "libusb zlib bzip2 openssl libtinyxml2"
 
