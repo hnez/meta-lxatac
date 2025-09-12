@@ -8,15 +8,6 @@ recipes:
     header: |-
       require github-act-runner.inc
 
-  - recipe: "meta-lxatac-software/recipes-devtools/gitlab-runner/gitlab-runner_$PV.bb"
-    template: "template.bb.jinja2"
-    git_tag:
-      url: "https://gitlab.com/gitlab-org/gitlab-runner.git"
-      version_pattern: "^v([\\d+\\.]*\\d+)$"
-      version_order: semver
-    header: |-
-      require gitlab-runner.inc
-
   - recipe: "meta-lxatac-software/recipes-devtools/qdl/qdl_$PV.bb"
     template: "template.bb.jinja2"
     git_tag:

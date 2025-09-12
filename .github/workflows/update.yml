@@ -12,12 +12,14 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v5
+        with:
+          submodules: recursive
 
       - name: Create a new branch
         run: git checkout -b "update/recipes-$(date +%Y%m%d)"
 
       - name: Run update script
-        run: python3 tools/update/update.py tools/update/recipes.yaml
+        run: python3 -u tools/update/update.py tools/update/recipes.yaml
 
       - name: Update rust dependencies
         run: |
