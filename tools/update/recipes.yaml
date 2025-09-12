@@ -38,12 +38,7 @@ recipes:
     template: "template.bb.jinja2"
     git_tag:
       url: "https://github.com/ClementTsang/bottom.git"
-      # Limit to 0.10.x releases for now because the sysinfo dependency in
-      # in its version 0.37.0 requires edition2024, which is to new for the
-      # rustc in walnascar.
-      # TODO: change back to "^([\\d+\\.]*\\d+)$" when moving on from
-      # walnascar.
-      version_pattern: "^(0\\.10[\\.\\d+]*)$"
+      version_pattern: "^([\\d+\\.]*\\d+)$"
       version_order: semver
     header: |-
       require bottom.inc
