@@ -21,11 +21,6 @@ jobs:
       - name: Run update script
         run: python3 -u tools/update/update.py tools/update/recipes.yaml
 
-      - name: Update rust dependencies
-        run: |
-          source oe-init-build-env
-          bitbake -c update_crates bottom tacd ripgrep
-
       - name: Check for changes
         run: |
           if git diff --name-only --exit-code; then
@@ -33,6 +28,13 @@ jobs:
           else
             HAVE_CHANGES="true"
           fi
+
+      - name: Update rust dependencies
+        if: ${{ env.HAVE_CHANGES == 'true' }}
+        run: |
+          sudo apt instal chrpath diffstat
+          source oe-init-build-env
+          bitbake -c update_crates bottom tacd ripgrep
 
       - name: Create and push commit
         if: ${{ env.HAVE_CHANGES == 'true' }}
