@@ -89,8 +89,8 @@ recipes:
       version_pattern: "^bcu_(1\\.1[\\.\\d+]*)$"
       version_order: semver
       add_pv: true
-    header: |-
-      FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+    trailer: |-
+      SRC_URI:remove = "file://0001-CMakeLists-do-not-use-vendored-libcurl.patch"
 
   - recipe: "meta-lxatac-software/recipes-graphics/panel-mipi-dbi/panel-mipi-dbi-native_git.bbappend"
     template: "template.bb.jinja2"
