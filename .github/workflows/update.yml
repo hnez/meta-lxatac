@@ -33,14 +33,14 @@ jobs:
           fi
 
       - name: Create and push commit
-        if: ${{ env.HAVE_CHANGES == "true" }}
+        if: ${{ env.HAVE_CHANGES == 'true' }}
         run: |
           git add .
           git commit -m "Recipe update for $(date +%Y-%m-%d)"
           git push -u origin
 
       - name: Create pull request
-        if: ${{ env.HAVE_CHANGES == "true" }}
+        if: ${{ env.HAVE_CHANGES == 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh pr --base "${{ github.ref_name }}" --fill
