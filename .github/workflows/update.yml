@@ -46,7 +46,7 @@ jobs:
           mkdir -p build/conf
           cat <<EOF > build/conf/auto.conf
           # Use the shared sstate cache
-          SSTATE_MIRRORS = "file://.* https://github-runner.pengutronix.de/sstate-cache/PATH""
+          SSTATE_MIRRORS = "file://.* https://github-runner.pengutronix.de/sstate-cache/PATH"
 
           # As long as we do not have a global hash equivalence server running together
           # with the sstate mirror, using a (local) hash equivalence server will be
