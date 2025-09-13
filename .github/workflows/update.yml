@@ -71,7 +71,7 @@ jobs:
 
       - name: Push changes upstream
         if: ${{ steps.recipe-commit.outcome == 'success' }}
-        run: git push --set-upstream origin
+        run: git push --set-upstream origin "$(git branch --show-current)"
 
       - name: Create pull request
         if: ${{ steps.recipe-commit.outcome == 'success' }}
