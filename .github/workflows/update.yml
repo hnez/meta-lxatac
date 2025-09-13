@@ -26,13 +26,16 @@ jobs:
 
       - name: Commit changes to recipes
         id: recipe-commit
-        run: git commit --all --message="Recipe updates for $(date +%Y-%m-%d)"
+        run: |
+          git add .
+          git commit --message="Recipe updates for $(date +%Y-%m-%d)"
         continue-on-error: true
 
       - name: Update rust dependencies
         if: ${{ steps.recipe-commit.outcome == 'success' }}
         run: |
           sudo apt-get install chrpath diffstat
+          echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
 
           git submodule init
           git submodule update --single-branch --depth 1
@@ -42,7 +45,9 @@ jobs:
 
       - name: Commit changes to rust dependencies
         if: ${{ steps.recipe-commit.outcome == 'success' }}
-        run: git commit --all --message="Rust crate update for $(date +%Y-%m-%d)"
+        run: |
+          git add .
+          git commit --message="Rust crate update for $(date +%Y-%m-%d)"
         continue-on-error: true
 
       - name: Push changes upstream
