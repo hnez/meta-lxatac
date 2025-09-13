@@ -80,4 +80,4 @@ jobs:
         if: ${{ steps.recipe-commit.outcome == 'success' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr --base "${{ github.ref_name }}" --fill
+        run: gh pr create --base "${{ github.ref_name }}" --fill
