@@ -34,12 +34,31 @@ jobs:
       - name: Update rust dependencies
         if: ${{ steps.recipe-commit.outcome == 'success' }}
         run: |
+          # Set up the system for use with bitbake
           sudo apt-get install chrpath diffstat
           echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
 
+          # Get meta layers
           git submodule init
           git submodule update --single-branch --depth 1
 
+          # Configure bitbake to use pre-built sstate
+          mkdir -p build/conf
+          cat <<EOF > build/conf/auto.conf
+          # Use the shared sstate cache
+          SSTATE_MIRRORS = "file://.* https://github-runner.pengutronix.de/sstate-cache/PATH""
+
+          # As long as we do not have a global hash equivalence server running together
+          # with the sstate mirror, using a (local) hash equivalence server will be
+          # ineffective as hashes match less often. Disable hash equivalence for now.
+          BB_SIGNATURE_HANDLER = "OEBasicHash"
+          BB_HASHSERVE = ""
+
+          # Prefer fast compression over small file size
+          OPKGBUILDCMD = "opkg-build -Z gzip -a -1n"
+          EOF
+
+          # Update the -crates.inc files
           source oe-init-build-env
           bitbake -c update_crates bottom tacd ripgrep
 
