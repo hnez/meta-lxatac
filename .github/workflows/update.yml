@@ -32,7 +32,7 @@ jobs:
       - name: Update rust dependencies
         if: ${{ steps.recipe-commit.outcome == 'success' }}
         run: |
-          sudo apt instal chrpath diffstat
+          sudo apt-get install chrpath diffstat
 
           git submodule init
           git submodule update --single-branch --depth 1

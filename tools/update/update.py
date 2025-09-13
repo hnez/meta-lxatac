@@ -145,12 +145,15 @@ def fetch_info(recipe_info):
 
 
 def write_recipe(recipe_info, jinja_env):
-    # Determine the pre-existing recipe files we have to delete later
-    old_recipes = glob.glob(glob.escape(recipe_info["recipe"]).replace("$PV", "*"))
-
     # Generate new recipe content
     template = jinja_env.get_template(recipe_info["template"])
     recipe_bb = template.render(info=recipe_info)
+
+    # Delete old recipes
+    old_recipes = glob.glob(glob.escape(recipe_info["recipe"]).replace("$PV", "*"))
+    for old_recipe in old_recipes:
+        os.remove(old_recipe)
+        print(f"Removed {old_recipe}")
 
     # Write new recipe to disk
     recipe_path = recipe_info["recipe"].replace("$PV", recipe_info["source"]["pv"])
@@ -160,12 +163,7 @@ def write_recipe(recipe_info, jinja_env):
 
     with open(recipe_path, "w") as fd:
         fd.write(recipe_bb)
-
-    print(f"Wrote {recipe_path}")
-
-    # Delete old recipes
-    for old_recipe in old_recipes:
-        os.remove(old_recipe)
+        print(f"Wrote {recipe_path}")
 
 
 def main(argv):
