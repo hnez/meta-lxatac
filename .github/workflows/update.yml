@@ -9,6 +9,9 @@ jobs:
   update:
     name: update recipes
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Check out the repository
         uses: actions/checkout@v5
