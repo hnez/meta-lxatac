@@ -13,6 +13,11 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v5
 
+      - name: Configure git
+        run: |
+          git config user.email "info@linux-automation.com"
+          git config user.name "Recipe Updater Bot"
+
       - name: Create a new branch
         run: git checkout -b "update/recipes-$(date +%Y%m%d)"
 
