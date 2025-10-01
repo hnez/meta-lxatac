@@ -2,6 +2,6 @@
 
 require tacd-webinterface.inc
 
-# Commit 71aae7abee147883b9c6e19b7119800c1b395b90 created 2025-08-29 13:22:33 +0200
+# Commit 1c2f16f8b4041b31cee702677630298614c23feb created 2025-09-23 16:58:43 +0200
 SRCBRANCH = "main"
-SRCREV = "71aae7abee147883b9c6e19b7119800c1b395b90"
+SRCREV = "1c2f16f8b4041b31cee702677630298614c23feb"
