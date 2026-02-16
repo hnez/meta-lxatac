@@ -5,9 +5,9 @@ SRC_URI += " \
     file://env \
 "
 
-# Release commit created 0000-00-00 00:00:00 +0000
-PV = "2025.11.0"
-SRC_URI[sha256sum] = "6a487eb975169ef4ecc912d3e1044fb9ee4aa164c21d4db960a384a60d0914f6"
+# Release commit created 2026-01-19 13:30:59 +0100
+PV = "2026.01.0"
+SRC_URI[sha256sum] = "219283d67c5d2f79bd22915b8a71906531223cb01e6e5b8d1658f299441e4169"
 
 COMPATIBLE_MACHINE = "lxatac"
 
