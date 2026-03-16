@@ -4,7 +4,7 @@
 # Do not modify it by hand, as the contents will be replaced when
 # running the update-modules task.
 
-LICENSE += "& Apache-2.0 & BSD-2-Clause & BSD-3-Clause & GPL-3.0-only & ISC & MIT & MPL-2.0 & Zlib"
+LICENSE += "& AND & Apache-2.0 & BSD-2-Clause & BSD-3-Clause & GPL-3.0-only & ISC & MIT & MPL-2.0 & Zlib"
 
 LIC_FILES_CHKSUM += "\
     file://pkg/mod/cel.dev/expr@v0.25.1/LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd57;spdx=Apache-2.0 \
