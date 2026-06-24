@@ -34,3 +34,7 @@
 	path = meta-arm
 	url = https://git.yoctoproject.org/meta-arm
 	branch = wrynose
+[submodule "meta-timesys"]
+	path = meta-timesys
+	url = https://github.com/TimesysGit/meta-timesys.git
+	branch = wrynose

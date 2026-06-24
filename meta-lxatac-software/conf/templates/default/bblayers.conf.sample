@@ -20,4 +20,5 @@ BBLAYERS ?= " \
   ##OEROOT##/../meta-rauc \
   ##OEROOT##/../meta-virtualization \
   ##OEROOT##/../meta-selinux \
+  ##OEROOT##/../meta-timesys \
   "
